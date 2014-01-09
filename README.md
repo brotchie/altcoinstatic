@@ -18,8 +18,8 @@ Serve output/ using to view the site. e.g.
 `coinyesbest.py` can be easily modified to interface with litecoind, bitcoind,
 or any other crypto-currency based off the vanilla bitcoin sources.
 
-Configure coinyecoind JSON-RPC by adding the rpcuser and rpcpassword config
-entries to ~/.coinyecoin/coinyecoin.conf.
+Configure coinyecoind JSON-RPC by adding the `rpcuser` and `rpcpassword` config
+entries to `~/.coinyecoin/coinyecoin.conf`.
 
 Depends on bitcoin-python and mako templates:
 
