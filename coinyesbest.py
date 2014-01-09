@@ -45,9 +45,9 @@ INDEX_OUTPUT_PATH = 'output/index.html'
 KEY_RPC_PASSWORD = 'rpcpassword'
 KEY_RPC_USER = 'rpcuser'
 
-ACTION_CREATE_ACCOUNT = 'createaccount'
+ACTION_CREATE_ACCOUNTS = 'createaccounts'
 ACTION_GENERATE_INDEX = 'generateindex'
-VALID_ACTIONS = [ACTION_CREATE_ACCOUNT, ACTION_GENERATE_INDEX]
+VALID_ACTIONS = [ACTION_CREATE_ACCOUNTS, ACTION_GENERATE_INDEX]
 
 def parse_config(path=COINYE_CONF_PATH):
     """ Parses the coinyecoin config file
@@ -106,7 +106,7 @@ def main():
         raise IOError('List of Kanye West tracks not found at "{}".'.format(KANYE_TRACKS_CSV_PATH))
     kanye_tracks = csv.reader(file(KANYE_TRACKS_CSV_PATH))
 
-    if action == ACTION_CREATE_ACCOUNT:
+    if action == ACTION_CREATE_ACCOUNTS:
         # getaccountaddresses creates a new address even if that
         # account already exists. We only want a 1:1 mapping between
         # wallet accounts and addresses so we only call getaccountaddress
