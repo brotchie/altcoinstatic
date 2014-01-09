@@ -19,7 +19,7 @@ Serve output/ using to view the site. For example
 or any other crypto-currency based off the vanilla bitcoin sources.
 
 Configure coinyecoind JSON-RPC by adding the `rpcuser` and `rpcpassword` config
-entries to `~/.coinyecoin/coinyecoin.conf`.
+entries to `~/.dogecoin/dogecoin.conf`.
 
 Depends on bitcoin-python and mako templates:
 
