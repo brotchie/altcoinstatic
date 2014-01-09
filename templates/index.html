@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <title>Coinye's Best - Use COYE to vote for your favourite Yeezy tracks.</title>
+
+    <link rel="stylesheet" href="reset.css"/>
+    <link rel="stylesheet" href="style.css"/>
+
+    <!-- OpenGraph Tags -->
+    <meta property="og:title" content="Coinye's Best"/>
+    <meta property="og:image" content="http://coinyesbest.com/coinye.png"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://coinyesbest.com/"/>
+    <meta property="description" content="Is the Coinye (COYE) crypto-currency worthless? vote for your favourite Yeezy track by sending COYE to its address."/>
+    <meta property="og:description" content="Is the Coinye (COYE) crypto-currency worthless? vote for your favourite Yeezy track by sending COYE to its address."/>
+  </head>
+  <body>
+    <!-- Spotify Playlist -->
+    <iframe class="spotify" src="https://embed.spotify.com/?uri=spotify:user:1235363762:playlist:20juoPAzhG8lPabI2krb1u&theme=white" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+
+    <div class="header">
+      <img src="coinye.png"><br>
+      <div class="header-text">
+        <h1>Coinye's Best</h1>
+        <h2>Is the Coinye (COYE) crypto-currency worthless? vote for your favourite Yeezy track by sending COYE to its address.</h2>
+      </div>
+    </div>
+
+    <div class="note">Note: The Coinye block chain browser (coinyechain.info) is delayed. Votes sent as COYE will be displayed here almost immediately.</div>
+
+    <div id="content">
+      % for ii, track in enumerate(tracks):
+        % if (ii % 2) == 0:
+          <div class="row even">
+        % else:
+          <div class="row odd">
+        % endif
+          <span class="rank">${ii+1}</span>
+          <span class="balance">${track['balance_text']}<br><span class="coye">COYE</span></span>
+          <span class="title">${track['title']}</span>
+          <span class="album">${track['album']} (${track['year']})</span>
+          <span class="address"><span class="vote">vote:</span> ${track['address']}</span>
+          <a class="chain" target="_blank" href="http://coinyechain.info/address/${track['address']}">[bc]</a>
+        </div>
+      % endfor
+    </div>
+
+    <footer>
+      <!-- DOGE donations -->
+      <script src="http://cdn.bitmindo.com/dogecoin.min.js"></script>
+      <script>
+        CoinWidgetCom.go({
+          wallet_address: "DSkKj9tYStW9pBaqLwEKENLU1RPJWZLihJ"
+          , currency: "dogecoin"
+          , counter: "amount"
+          , alignment: "bl"
+          , qrcode: true
+          , auto_show: false
+          , lbl_button: "Donate"
+          , lbl_address: "Tip Dogecoin to this Address:"
+          , lbl_amount: "DOGE"
+        });
+      </script>
+      <!-- Google Analytics -->
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-46942189-1', 'coinyesbest.com');
+        ga('send', 'pageview');
+
+      </script>
+    </footer>
+  </body>
+</html>
