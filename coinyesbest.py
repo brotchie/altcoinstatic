@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-Example of using coinyecoind to generate a static webpage 
+Example of using coinyecoind to generate a static webpage
 of Kanye West tracks ranked by the amount of COYE donated
 to each track's pubkey address.
 
@@ -64,6 +64,8 @@ def parse_config(path=COINYE_CONF_PATH):
     return cfg
 
 def load_addresses(path=ADDRESSES_JSON_PATH):
+    """ Load a map from account names to pubkey addresses.
+    """
     if os.path.exists(path):
         print 'Read addresses from "{}".'.format(path)
         return json.load(file(path))
@@ -72,26 +74,30 @@ def load_addresses(path=ADDRESSES_JSON_PATH):
         return {}
 
 def save_addresses(addresses, path=ADDRESSES_JSON_PATH):
+    """ Save a map from account names to pubkey addresses.
+    """
     print 'Wrote {} addresses to "{}".'.format(len(addresses), path)
     json.dump(addresses, file(path, 'w+'))
 
 CLEAN_RE = re.compile('[^A-Za-z0-9]')
 
-def genkey(s):
+def genkey(value):
     """ Strip all non-alphanumeric characters out of a string.
         Used to generate simple wallet account names.
     """
-    return CLEAN_RE.sub('', s)
+    return CLEAN_RE.sub('', value)
 
 def main():
     if len(sys.argv) < 2 or sys.argv[1] not in VALID_ACTIONS:
-        sys.stderr.write('Invalid action. Available actions: {}.\n'.format(', '.join(VALID_ACTIONS)))
+        sys.stderr.write('Invalid action. Available actions: {}.\n'
+                            .format(', '.join(VALID_ACTIONS)))
         sys.exit(1)
     action = sys.argv[1]
 
     cfg = parse_config()
     if KEY_RPC_USER not in cfg or KEY_RPC_PASSWORD not in cfg:
-        raise KeyError('coinyecoind config file must contain "{}" and "{}" entries.'.format(KEY_RPC_USER, KEY_RPC_PASSWORD))
+        raise KeyError('coinyecoind config file must contain "{}" and "{}" entries.'
+                        .format(KEY_RPC_USER, KEY_RPC_PASSWORD))
 
     addresses = load_addresses()
     rpc = bitcoinrpc.connect_to_remote(cfg[KEY_RPC_USER], cfg[KEY_RPC_PASSWORD], port=COINYE_RPC_PORT)
@@ -101,13 +107,17 @@ def main():
     kanye_tracks = csv.reader(file(KANYE_TRACKS_CSV_PATH))
 
     if action == ACTION_CREATE_ACCOUNT:
+        # getaccountaddresses creates a new address even if that
+        # account already exists. We only want a 1:1 mapping between
+        # wallet accounts and addresses so we only call getaccountaddress
+        # once per track and then store these addresess in addresses.json.
         accounts = rpc.listaccounts()
         for (track, title, album, year) in kanye_tracks:
             key = genkey(title + album)
             if key not in accounts:
                 print 'Creating account ' + key
                 addresses[key] = rpc.getaccountaddress(key)
-                print 'Created account ' + key + ' with address ' + address
+                print 'Created account ' + key + ' with address ' + addresses[key]
         save_addresses(addresses)
     elif action == ACTION_GENERATE_INDEX:
         tracks = []
