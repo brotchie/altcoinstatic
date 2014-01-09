@@ -1,4 +1,5 @@
 ### Generate a static web page with coinyecoind account balances
+**Note: dogecoind variant available in the doge branch (https://github.com/brotchie/coinyesbest/tree/doge).**
 
 Example of using coinyecoind to generate a static webpage
 of Kanye West's tracks ranked by the amount of COYE donated
