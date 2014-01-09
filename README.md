@@ -1,8 +1,10 @@
+### Generate a static web page with coinyecoind account balances
+
 Example of using coinyecoind to generate a static webpage
 of Kanye West's tracks ranked by the amount of COYE donated
 to each track's pubkey address.
 
-Visibly at http://coinyesbest.com/
+Visible at http://coinyesbest.com/
 
 Use `./coinyesbest.py createaccounts` to initialize accounts then
 `./coinyesbest.py generateindex` to generate the static ranking page
