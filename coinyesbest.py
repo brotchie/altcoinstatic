@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 """
-Example of using coinyecoind to generate a static webpage
-of Kanye West tracks ranked by the amount of COYE donated
+Example of using dogecoind to generate a static webpage
+of Kanye West tracks ranked by the amount of DOGE donated
 to each track's pubkey address.
 
 Use './coinyesbest.py createaccounts' to initialize accounts then
@@ -16,8 +16,8 @@ Server output/ using a webserver to view the site. e.g.
 This can be easily modified to interface with litecoind, bitcoind,
 or any other crypto-currency based off the bitcoin sources.
 
-Setup coinyecoind JSON-RPC by adding the rpcuser and rpcpassword config
-entries to ~/.coinyecoin/coinyecoin.conf.
+Setup dogecoind JSON-RPC by adding the rpcuser and rpcpassword config
+entries to ~/.dogecoin/dogecoin.conf.
 
 Depends on bitcoin-python and mako templates:
     sudo pip install bitcoin-python mako
@@ -33,8 +33,8 @@ import json
 import bitcoinrpc
 from mako.template import Template
 
-COINYE_RPC_PORT = 41337
-COINYE_CONF_PATH = os.path.expanduser('~/.coinyecoin/coinyecoin.conf')
+DOGE_RPC_PORT = 41337
+DOGE_CONF_PATH = os.path.expanduser('~/.dogecoin/dogecoin.conf')
 
 ADDRESSES_JSON_PATH = './addresses.json'
 KANYE_TRACKS_CSV_PATH = './kanye.csv'
@@ -49,11 +49,11 @@ ACTION_CREATE_ACCOUNTS = 'createaccounts'
 ACTION_GENERATE_INDEX = 'generateindex'
 VALID_ACTIONS = [ACTION_CREATE_ACCOUNTS, ACTION_GENERATE_INDEX]
 
-def parse_config(path=COINYE_CONF_PATH):
-    """ Parses the coinyecoin config file
+def parse_config(path=DOGE_CONF_PATH):
+    """ Parses the dogecoin config file
     """
     if not os.path.exists(path):
-        raise IOError('Could not find coinyecoind config file at "{}".'.format(path))
+        raise IOError('Could not find dogecoind config file at "{}".'.format(path))
 
     cfg = {}
     for entry in file(path):
@@ -96,11 +96,11 @@ def main():
 
     cfg = parse_config()
     if KEY_RPC_USER not in cfg or KEY_RPC_PASSWORD not in cfg:
-        raise KeyError('coinyecoind config file must contain "{}" and "{}" entries.'
+        raise KeyError('dogecoind config file must contain "{}" and "{}" entries.'
                         .format(KEY_RPC_USER, KEY_RPC_PASSWORD))
 
     addresses = load_addresses()
-    rpc = bitcoinrpc.connect_to_remote(cfg[KEY_RPC_USER], cfg[KEY_RPC_PASSWORD], port=COINYE_RPC_PORT)
+    rpc = bitcoinrpc.connect_to_remote(cfg[KEY_RPC_USER], cfg[KEY_RPC_PASSWORD], port=DOGE_RPC_PORT)
 
     if not os.path.exists(KANYE_TRACKS_CSV_PATH):
         raise IOError('List of Kanye West tracks not found at "{}".'.format(KANYE_TRACKS_CSV_PATH))
@@ -133,7 +133,7 @@ def main():
                 'balance': float(balance),
                 'balance_text': '%.2f' % float(balance)
             })
-        # We rank the tracks by the amount of COYE donated to each.
+        # We rank the tracks by the amount of DOGE donated to each.
         tracks.sort(key=lambda x: x['balance'], reverse=True)
         template = Template(filename=INDEX_TEMPLATE_PATH)
         print 'Read template from "{}".'.format(INDEX_TEMPLATE_PATH)

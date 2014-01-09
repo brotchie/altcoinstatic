@@ -1,7 +1,7 @@
-### Generate a static web page with coinyecoind account balances
+### Generate a static web page with dogecoind account balances
 
-Example of using coinyecoind to generate a static webpage
-of Kanye West's tracks ranked by the amount of COYE donated
+Example of using dogecoind to generate a static webpage
+of Kanye West's tracks ranked by the amount of DOGE donated
 to each track's pubkey address.
 
 Visible at http://coinyesbest.com/

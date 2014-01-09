@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Coinye's Best - Use COYE to vote for your favourite Yeezy tracks.</title>
+    <title>Coinye's Best - Use DOGE to vote for your favourite Yeezy tracks.</title>
 
     <link rel="stylesheet" href="reset.css"/>
     <link rel="stylesheet" href="style.css"/>
@@ -10,8 +10,8 @@
     <meta property="og:image" content="http://coinyesbest.com/coinye.png"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="http://coinyesbest.com/"/>
-    <meta property="description" content="Is the Coinye (COYE) crypto-currency worthless? vote for your favourite Yeezy track by sending COYE to its address."/>
-    <meta property="og:description" content="Is the Coinye (COYE) crypto-currency worthless? vote for your favourite Yeezy track by sending COYE to its address."/>
+    <meta property="description" content="Is the Coinye (COYE) crypto-currency worthless? vote for your favourite Yeezy track by sending DOGE to its address."/>
+    <meta property="og:description" content="Is the Coinye (COYE) crypto-currency worthless? vote for your favourite Yeezy track by sending DOGE to its address."/>
   </head>
   <body>
     <!-- Spotify Playlist -->
@@ -21,11 +21,9 @@
       <img src="coinye.png"><br>
       <div class="header-text">
         <h1>Coinye's Best</h1>
-        <h2>Is the Coinye (COYE) crypto-currency worthless? vote for your favourite Yeezy track by sending COYE to its address.</h2>
+        <h2>Is the Coinye (COYE) crypto-currency worthless? vote for your favourite Yeezy track by sending DOGE to its address.</h2>
       </div>
     </div>
-
-    <div class="note">Note: The Coinye block chain browser (coinyechain.info) is delayed. Votes sent as COYE will be displayed here almost immediately.</div>
 
     <div id="content">
       % for ii, track in enumerate(tracks):
@@ -35,7 +33,7 @@
           <div class="row odd">
         % endif
           <span class="rank">${ii+1}</span>
-          <span class="balance">${track['balance_text']}<br><span class="coye">COYE</span></span>
+          <span class="balance">${track['balance_text']}<br><span class="coye">DOGE</span></span>
           <span class="title">${track['title']}</span>
           <span class="album">${track['album']} (${track['year']})</span>
           <span class="address"><span class="vote">vote:</span> ${track['address']}</span>
