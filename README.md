@@ -10,7 +10,7 @@ Use `./coinyesbest.py createaccounts` to initialize accounts then
 `./coinyesbest.py generateindex` to generate the static ranking page
 `output/index.html`.
 
-Serve output/ using to view the site. e.g.
+Serve output/ using to view the site. For example
 
     twistd web --path=output -p 8082
     google-chrome http://localhost:8082/
