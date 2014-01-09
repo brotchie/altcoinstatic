@@ -33,7 +33,7 @@ import json
 import bitcoinrpc
 from mako.template import Template
 
-DOGE_RPC_PORT = 41337
+DOGE_RPC_PORT = 22555
 DOGE_CONF_PATH = os.path.expanduser('~/.dogecoin/dogecoin.conf')
 
 ADDRESSES_JSON_PATH = './addresses.json'
