@@ -4,8 +4,6 @@ Example of using dogecoind to generate a static webpage
 of Kanye West's tracks ranked by the amount of DOGE donated
 to each track's pubkey address.
 
-Visible at http://coinyesbest.com/ (with COYE rather than DOGE)
-
 Use `./coinyesbest.py createaccounts` to initialize accounts then
 `./coinyesbest.py generateindex` to generate the static ranking page
 `output/index.html`.
